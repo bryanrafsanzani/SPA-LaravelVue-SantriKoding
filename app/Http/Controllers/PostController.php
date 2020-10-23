@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Post;
+use \Validator;
 
 class PostController extends Controller
 {
@@ -79,7 +81,7 @@ class PostController extends Controller
         }
     }
 
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         //validate data
         $validator = Validator::make($request->all(), [

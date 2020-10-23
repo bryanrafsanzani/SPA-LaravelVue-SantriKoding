@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,8 +19,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/posts', 'PostsController@index');
-Route::post('/posts/store', 'PostsController@store');
-Route::get('/posts/{id?}', 'PostsController@show');
-Route::post('/posts/update/{id?}', 'PostsController@update');
-Route::delete('/posts/{id?}', 'PostsController@destroy');
+Route::get('/posts', [PostController::class, 'index']);
+Route::post('/posts/store', [PostController::class, 'store']);
+Route::get('/posts/{id?}', [PostController::class, 'show']);
+Route::post('/posts/update/{id?}', [PostController::class, 'update']);
+Route::delete('/posts/{id?}', [PostController::class, 'destroy']);
